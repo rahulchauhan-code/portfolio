@@ -1,5 +1,135 @@
-{% extends "base.html" %}
-{% block content %}
-<h2>Welcome</h2>
-<p>{{ resume.summary }}</p>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ resume.name }} | Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+    <meta name="description" content="Portfolio of {{ resume.name }}">
+    <meta name="theme-color" content="#667eea">
+    <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='images/bb.jpg') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-logo">
+            <a href="/">{{ resume.name }}</a>
+        </div>
+        <div class="navbar-toggle" id="navbar-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul class="navbar-menu" id="navbar-menu">
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/skills">Skills</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/education">Education</a></li>
+            <li><a href="/contact">Contact</a></li>
+        </ul>
+        <div class="theme-toggle" id="theme-toggle" title="Toggle dark/light mode">
+            <i class="fas fa-moon"></i>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-container">
+        <div class="hero-text-content">
+            <span class="hero-label">Welcome to my portfolio</span>
+            <h1 class="hero-title">{{ resume.name }}</h1>
+            <p class="hero-role">{{ resume.role }}</p>
+            <p class="hero-description">{{ resume.summary }}</p>
+            <div class="hero-buttons">
+                <a href="{{ url_for('static', filename='Rahul Chauhan.pdf') }}" class="btn btn-primary" download>Download Resume</a>
+                <a href="/contact" class="btn btn-secondary">Contact Me</a>
+            </div>
+        </div>
+        <div class="hero-image-content">
+            <div class="image-wrapper">
+                <img src="{{ url_for('static', filename='images/portfolio.jpg') }}" alt="{{ resume.name }}" class="hero-profile-img">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section class="home-skills">
+    <div class="container">
+        <h2 class="section-title">Technical Skills</h2>
+        <ul class="skills-grid">
+            {% for skill in resume.skills %}
+            <li class="skill-item">{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</section>
+
+<!-- Projects Preview -->
+<section class="home-projects">
+    <div class="container">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            {% for project in resume.projects %}
+            <div class="project-card">
+                <h3 class="project-title">{{ project.title }}</h3>
+                <p class="project-description">{{ project.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="view-all-projects">
+            <a href="/projects" class="btn btn-outline">View All Projects</a>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="home-cta">
+    <div class="container">
+        <h2 class="cta-title">Let's Work Together</h2>
+        <p class="cta-description">Open to entry-level opportunities in Java development and web development</p>
+        <div class="cta-buttons">
+            <a href="/contact" class="btn btn-primary">Get In Touch</a>
+            <a href="{{ url_for('static', filename='Rahul Chauhan.pdf') }}" class="btn btn-outline" download>Download Resume</a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <p><i class="fas fa-envelope"></i> {{ resume.email }}</p>
+            <p><i class="fas fa-phone"></i> {{ resume.phone }}</p>
+        </div>
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/projects">Projects</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Social</h3>
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/rahul-chauhan-a99b0a2ba" title="LinkedIn" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/rahulchauhan-code" title="GitHub" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>{{ resume.name }}.</p>
+    </div>
+</footer>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

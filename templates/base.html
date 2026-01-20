@@ -14,18 +14,6 @@
 
 {% include 'navbar.html' %}
 
-<!-- Header with Profile Photo -->
-<header class="header">
-    <div class="header-content">
-        <div class="profile-photo">
-            <img src="{{ url_for('static', filename='images/portfolio.jpg') }}" alt="{{ resume.name }}" class="profile-img">
-        </div>
-        <div class="header-text">
-            <h1>{{ resume.name }}</h1>
-            <p class="role">{{ resume.role }}</p>
-        </div>
-    </div>
-</header>
 
 <main>
     {% block content %}{% endblock %}

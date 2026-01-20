@@ -1,6 +1,61 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>About Me</h2>
-<p>{{ resume.summary }}</p>
-<p>Location: {{ resume.location }}</p>
+
+<!-- About Hero -->
+<section class="about-hero">
+    <div class="container">
+        <div class="about-header">
+            <div class="about-image">
+                <img src="{{ url_for('static', filename='images/portfolio.jpg') }}" alt="{{ resume.name }}" class="about-profile-img">
+            </div>
+            <div class="about-intro">
+                <h1 class="about-title">About Me</h1>
+                <p class="about-subtitle">{{ resume.role }}</p>
+                <div class="about-contact-info">
+                    <p><i class="fas fa-envelope"></i> {{ resume.email }}</p>
+                    <p><i class="fas fa-phone"></i> {{ resume.phone }}</p>
+                    <p><i class="fas fa-map-marker-alt"></i> {{ resume.location }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Content -->
+<section class="about-content">
+    <div class="container">
+        <div class="about-section">
+            <h2 class="content-title">Who I Am</h2>
+            <p class="content-text">{{ resume.summary }}</p>
+        </div>
+
+        <div class="about-section">
+            <h2 class="content-title">What I Do</h2>
+            <p class="content-text">I specialize in building full-stack web applications with a focus on clean code, scalable architecture, and modern development practices. My expertise spans across frontend and backend technologies, enabling me to deliver complete solutions from concept to deployment.</p>
+        </div>
+
+        <div class="about-section">
+            <h2 class="content-title">Core Technologies</h2>
+            <ul class="tech-list">
+                {% for skill in resume.skills %}
+                <li class="tech-item"><i class="fas fa-check-circle"></i> {{ skill }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="about-section">
+            <h2 class="content-title">What Drives Me</h2>
+            <p class="content-text">I'm passionate about solving real-world problems through technology. I believe in continuous learning, staying updated with industry trends, and building applications that make a meaningful impact. I'm currently seeking entry-level opportunities where I can contribute my skills and grow as a developer.</p>
+        </div>
+
+        <div class="about-cta">
+            <h2 class="cta-text">Let's Connect</h2>
+            <div class="about-buttons">
+                <a href="/contact" class="btn btn-primary">Contact Me</a>
+                <a href="{{ url_for('static', filename='Rahul Chauhan.pdf') }}" class="btn btn-outline" download>Download Resume</a>
+            </div>
+        </div>
+    </div>
+</section>
+
 {% endblock %}

@@ -1,9 +1,180 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Skills</h2>
-<ul class="skills">
-    {% for skill in resume.skills %}
-    <li>{{ skill }}</li>
-    {% endfor %}
-</ul>
+
+<!-- Skills Hero -->
+<section class="skills-hero">
+    <div class="container">
+        <h1 class="skills-hero-title">Technical Skills</h1>
+        <p class="skills-hero-subtitle">Technologies and tools I work with to build scalable applications</p>
+    </div>
+</section>
+
+<!-- Skills Content -->
+<section class="skills-content">
+    <div class="container">
+        
+        <!-- Backend Development -->
+        <div class="skill-category">
+            <h2 class="category-title"><i class="fas fa-server"></i> Backend Development</h2>
+            <div class="skill-cards">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-java"></i>
+                    </div>
+                    <h3 class="skill-name">Java</h3>
+                    <p class="skill-description">Core Java, OOP concepts, data structures, and algorithm implementation</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="skill-name">Spring Boot</h3>
+                    <p class="skill-description">Building RESTful APIs, dependency injection, and enterprise applications</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3 class="skill-name">Python</h3>
+                    <p class="skill-description">Scripting, automation, and backend development with Python</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="skill-name">Flask</h3>
+                    <p class="skill-description">Lightweight web applications and RESTful API development</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="skill-name">C</h3>
+                    <p class="skill-description">Procedural programming, memory management, and system-level concepts</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Frontend Development -->
+        <div class="skill-category">
+            <h2 class="category-title"><i class="fas fa-desktop"></i> Frontend Development</h2>
+            <div class="skill-cards">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h3 class="skill-name">HTML</h3>
+                    <p class="skill-description">Semantic HTML5, accessibility, and modern web standards</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-css3-alt"></i>
+                    </div>
+                    <h3 class="skill-name">CSS</h3>
+                    <p class="skill-description">Responsive design, Flexbox, Grid, and modern CSS features</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-js"></i>
+                    </div>
+                    <h3 class="skill-name">JavaScript</h3>
+                    <p class="skill-description">ES6+, DOM manipulation, async programming, and modern frameworks</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h3 class="skill-name">React</h3>
+                    <p class="skill-description">Component-based architecture, hooks, state management, and routing</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Database Management -->
+        <div class="skill-category">
+            <h2 class="category-title"><i class="fas fa-database"></i> Database Management</h2>
+            <div class="skill-cards">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="skill-name">MySQL</h3>
+                    <p class="skill-description">Relational database design, SQL queries, joins, and optimization</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="skill-name">Oracle</h3>
+                    <p class="skill-description">Enterprise database management, PL/SQL, and advanced querying</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tools & Platforms -->
+        <div class="skill-category">
+            <h2 class="category-title"><i class="fas fa-tools"></i> Tools & Platforms</h2>
+            <div class="skill-cards">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-git-alt"></i>
+                    </div>
+                    <h3 class="skill-name">Git & GitHub</h3>
+                    <p class="skill-description">Version control, branching, merging, and collaborative development</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="skill-name">VS Code</h3>
+                    <p class="skill-description">Code editing, extensions, debugging, and integrated development</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3 class="skill-name">IntelliJ IDEA</h3>
+                    <p class="skill-description">Java development, refactoring, and enterprise application development</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-paper-plane"></i>
+                    </div>
+                    <h3 class="skill-name">Postman</h3>
+                    <p class="skill-description">API testing, documentation, and request/response validation</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3 class="skill-name">Spring Tool Suite</h3>
+                    <p class="skill-description">Spring Boot development, project management, and application deployment</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- System Knowledge -->
+        <div class="skill-category">
+            <h2 class="category-title"><i class="fas fa-cogs"></i> System Knowledge</h2>
+            <div class="skill-cards">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3 class="skill-name">Computer Hardware Basics</h3>
+                    <p class="skill-description">Understanding of system components, architecture, and hardware troubleshooting</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-windows"></i>
+                    </div>
+                    <h3 class="skill-name">Windows Installation & Troubleshooting</h3>
+                    <p class="skill-description">OS installation, system configuration, diagnostics, and issue resolution</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
 {% endblock %}

@@ -1,7 +1,131 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Contact</h2>
-<p>Email: {{ resume.email }}</p>
-<p>Phone: {{ resume.phone }}</p>
-<p>Location: {{ resume.location }}</p>
+
+<!-- Contact Hero -->
+<section class="contact-hero">
+    <div class="container">
+        <h1 class="contact-title">Get In Touch</h1>
+        <p class="contact-subtitle">I'd love to hear from you. Reach out anytime!</p>
+    </div>
+</section>
+
+<!-- Contact Content -->
+<section class="contact-section">
+    <div class="container">
+        <div class="contact-wrapper">
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <h2 class="contact-info-title">Contact Information</h2>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-detail">
+                        <h3>Email</h3>
+                        <a href="mailto:{{ resume.email }}">{{ resume.email }}</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-detail">
+                        <h3>Phone</h3>
+                        <a href="tel:{{ resume.phone }}">{{ resume.phone }}</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-detail">
+                        <h3>Location</h3>
+                        <p>{{ resume.location }}</p>
+                    </div>
+                </div>
+
+                <div class="social-links-contact">
+                    <a href="https://www.linkedin.com/in/rahul-chauhan-a99b0a2ba" target="_blank" rel="noopener" class="social-btn">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/rahulchauhan-code" target="_blank" rel="noopener" class="social-btn">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h2 class="contact-form-title">Send me a message</h2>
+                <form id="contactForm" class="form">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Your Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">Send Message</button>
+                    <div id="formMessage" class="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const subject = document.getElementById('subject').value;
+    const message = document.getElementById('message').value;
+    const submitBtn = document.getElementById('submitBtn');
+    const formMessage = document.getElementById('formMessage');
+    
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    
+    try {
+        const response = await fetch('/send-message', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, email, subject, message })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            formMessage.textContent = data.message;
+            formMessage.className = 'form-message success';
+            document.getElementById('contactForm').reset();
+        } else {
+            formMessage.textContent = data.message;
+            formMessage.className = 'form-message error';
+        }
+    } catch (error) {
+        formMessage.textContent = 'Error sending message. Please try again.';
+        formMessage.className = 'form-message error';
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+    }
+});
+</script>
+
 {% endblock %}

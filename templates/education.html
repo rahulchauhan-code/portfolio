@@ -1,11 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
-<h2>Education</h2>
-{% for edu in resume.education %}
-<div class="card">
-    <h3>{{ edu.degree }} - {{ edu.marks }}</h3>
-    <p><strong>{{ edu.institution }}</strong></p>
-    <p>{{ edu.year }}</p>
-</div>
-{% endfor %}
+
+<!-- Education Hero -->
+<section class="education-hero">
+    <div class="container">
+        <h1 class="education-title">Education</h1>
+        <p class="education-subtitle">My academic journey and learning achievements</p>
+    </div>
+</section>
+
+<!-- Education Content -->
+<section class="education-section">
+    <div class="container">
+        <div class="education-timeline">
+            {% for edu in resume.education %}
+            <div class="timeline-item">
+                <div class="timeline-marker"></div>
+                <div class="education-card">
+                    <div class="education-header">
+                        <h2 class="degree-title">{{ edu.degree }}</h2>
+                        <span class="education-year">{{ edu.year }}</span>
+                    </div>
+                    <p class="institution-name">{{ edu.institution }}</p>
+                    <div class="marks-badge">{{ edu.marks }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
 {% endblock %}
